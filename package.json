@@ -1,0 +1,21 @@
+{
+  "name": "visitingcard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"pnpm --filter web-admin dev\" \"cd backend && python manage.py runserver\"",
+    "prepare": "pnpm install",
+    "start-backend": "cd backend && python manage.py runserver",
+    "start-frontend": "pnpm --filter web-admin dev",
+
+    "dev:web-admin": "pnpm -F @visitingcard/packages/web-admin start",
+    "build:web-admin": "pnpm -F @visitingcard/frontend run build",
+    "lint:web-admin": "pnpm -F @visitingcard/frontend run lint",
+    "format:web-admin": "pnpm -F @visitingcard/frontend run format"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.10.0"
+}
