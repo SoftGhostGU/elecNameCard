@@ -1,0 +1,11 @@
+# Ignore the virtual environment folder
+venv/
+
+# Ignore other build and cache files
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.vscode/
+node_modules/
+build/

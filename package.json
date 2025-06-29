@@ -1,21 +1,20 @@
 {
-  "name": "visitingcard",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "concurrently \"pnpm --filter web-admin dev\" \"cd backend && python manage.py runserver\"",
-    "prepare": "pnpm install",
-    "start-backend": "cd backend && python manage.py runserver",
-    "start-frontend": "pnpm --filter web-admin dev",
-
-    "dev:web-admin": "pnpm -F @visitingcard/packages/web-admin start",
-    "build:web-admin": "pnpm -F @visitingcard/frontend run build",
-    "lint:web-admin": "pnpm -F @visitingcard/frontend run lint",
-    "format:web-admin": "pnpm -F @visitingcard/frontend run format"
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "lerna": "^8.2.2",
+    "npm-run-all": "^4.1.5"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@10.10.0"
+  "scripts": {
+    "setup:web": "lerna run setup --scope=admin-panel",
+    "start:web": "lerna run start --scope=admin-panel",
+
+    "venv:backend": "cd .\\packages\\backend\\ && python -m venv venv",
+    "setup:backend": "cd packages/backend && .\\venv\\Scripts\\python install_deps.py",
+    "start:backend:run": "cd packages/backend && .\\venv\\Scripts\\python manage.py runserver"
+  }
 }
