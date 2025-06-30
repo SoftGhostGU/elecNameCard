@@ -1,0 +1,69 @@
+<view class="container">
+  <!-- #90bbfc -->
+  <View class="namecard">
+    <!-- <View class="decoration-bar"></View> -->
+
+    <View class="basic-info">
+      <View class="title">
+        <View class="company-logo">
+          <image src="{{logo}}" class="logo"></image>
+        </View>
+        <View class="company">{{ company }}</View>
+      </View>
+
+      <View class="other-info">
+        <View class="name">{{ name }}</View>
+        <View class="comAndPosi">
+          <View class="occupation">{{ occupation }}</View>
+        </View>
+      </View>
+    </View>
+
+    <View class="phone-info">
+      <View class="contact-item">
+        <image src="/assets/icons/phone-icon.png" class="contact-icon"></image>
+        <View class="tele">{{ tele }}</View>
+      </View>
+      <View class="contact-item">
+        <image src="/assets/icons/email-icon.png" class="contact-icon"></image>
+        <View class="email">{{ email }}</View>
+      </View>
+      <View class="contact-item">
+        <image src="/assets/icons/address-icon.png" class="contact-icon"></image>
+        <View class="address">{{ address }}</View>
+      </View>
+      <View class="contact-item">
+        <image src="/assets/icons/web-icon.png" class="contact-icon"></image>
+        <View class="https">{{ https }}</View>
+      </View>
+    </View>
+  </View>
+
+  <View class="share-button">
+    <button class="share">分享名片</button>
+    <button class="save">存入通讯录</button>
+  </View>
+
+  <!-- <View class="other-button">
+    <View class="watch">
+      <image src="/assets/icons/watch-icon.png" class="button-icon"/>
+      <View class="button-text">查看：{{ userdata.watch }}</View>
+    </View>
+    <View class="like">
+      <image src="/assets/icons/like-icon.png" class="button-icon"/>
+      <View class="button-text">点赞：{{ userdata.like }}</View>
+    </View>
+    <View class="addAlbum">
+      <image src="/assets/icons/add-icon.png" class="button-icon"/>
+      <View class="button-text">添加名片</View>
+    </View>
+  </View> -->
+
+  <!-- <View class="company-intro">
+    {{ companyIntro }}
+  </View> -->
+
+  <!-- <View class="btn" bindtap="handleGetNow">
+    点击跳转
+  </View> -->
+</view>
