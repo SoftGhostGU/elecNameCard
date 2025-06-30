@@ -1,0 +1,291 @@
+page {
+  // width: 100%;
+  // height: 100%;
+  // min-height: 100vh;
+  display: block;
+  position: relative;
+  background: linear-gradient(0deg, #fff, #d7e7ff);
+}
+
+.container {
+  display: block;
+  align-items: center;
+  margin: 0 40rpx;
+  padding-bottom: 0;
+}
+
+.namecard {
+  background-color: #fff;
+  width: calc(100% - 80rpx);
+  height: fit-content;
+  padding: 40rpx;
+  position: relative;
+  border-radius: 40rpx;
+  // border: 1rpx solid #24217b;
+
+  .decoration-bar {
+    background-color: #565fea;
+    width: 40rpx;
+    height: 90rpx;
+    position: absolute;
+    top: 0;
+    left: 70rpx;
+  }
+
+  .basic-info {
+    // background-color: rgb(255, 0, 0);
+    // width: fit-content;
+    margin-bottom: 30rpx;
+
+    .title {
+      line-height: 35rpx;
+      display: flex;
+      flex-direction: row;
+
+      .company {
+        height: 100%;
+        // background-color: #fff;
+        position: relative;
+        /* 为伪元素定位提供参照 */
+        padding-bottom: 10rpx;
+        /* 为横线留出空间 */
+        margin-bottom: 10rpx;
+        /* 可选：增加与下方元素的间距 */
+        font-size: 32rpx;
+        font-weight: bold;
+        display: flex;
+      }
+    }
+
+    .company-logo {
+      width: 80rpx;
+      height: 70rpx;
+      float: left;
+      // background-color: red;
+      // border-bottom: 1rpx solid #24217b;
+      margin-right: 20rpx;
+      padding-top: 2rpx;
+
+      .logo {
+        width: 80rpx;
+        height: 28rpx;
+        float: left;
+      }
+    }
+
+    .other-info {
+      width: 100%;
+      display: flex;
+
+      .name {
+        font-size: 46rpx;
+        width: fit-content;
+        float: left;
+        padding-right: 20rpx;
+        margin-right: 20rpx;
+        border-right: 1rpx solid #565fea;
+      }
+
+      .comAndPosi {
+        float: left;
+        position: relative;
+
+        .company::after {
+          content: "";
+          /* 伪元素必需属性 */
+          position: absolute;
+          bottom: 0;
+          /* 定位到父元素底部 */
+          left: 0;
+          width: 100%;
+          height: 1rpx;
+          /* 线的高度 */
+          background-color: #565fea;
+          /* 线的颜色 */
+          /* 可选添加渐变效果 */
+          /* background: linear-gradient(to right, transparent, #eaeaea, transparent); */
+        }
+
+        .occupation {
+          font-size: 32rpx;
+          margin-top: 18rpx;
+        }
+      }
+    }
+  }
+
+  .phone-info {
+    // display: flex;
+    // flex-wrap: wrap;
+    align-items: center;
+    padding: 0 15rpx;
+    font-size: 14px;
+    color: #666;
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      // margin-right: 30rpx;
+      /* 项与项之间的间距 */
+      margin-top: 20rpx;
+      /* 换行时的垂直间距 */
+    }
+
+    /* 图标样式 */
+    .contact-icon {
+      width: 36rpx;
+      height: 36rpx;
+      margin-right: 20rpx;
+    }
+
+    .tele,
+    .email,
+    .address,
+    .https {
+      width: calc(100% - 56rpx);
+    }
+
+    /* 响应式调整 - 在小屏幕上减少间距 */
+    @media screen and (max-width: 375px) {
+      .contact-item {
+        margin-right: 15rpx;
+      }
+    }
+  }
+}
+
+/* 分享按钮 */
+.share-button {
+  margin-top: 40rpx;
+  display: flex;
+  flex-wrap: wrap;
+
+  .share {
+    width: 45%;
+    margin-right: 20rpx;
+    color: #565fea;
+    border: 1rpx solid #565fea;
+    border-radius: 40rpx;
+    transition: all 0.2s;
+  }
+
+  .share:active {
+    color: #fff;
+    background-color: #565fea;
+    transition: all 0.2s;
+  }
+
+  .save {
+    width: 45%;
+    border-radius: 40rpx;
+    color: #fff;
+    border: 1rpx solid #565fea;
+    transition: all 0.2s;
+    background-color: #565fea;
+  }
+
+  .save:active {
+    color: #565fea;
+    background-color: #fff;
+    transition: all 0.2s;
+  }
+}
+
+/* 按钮样式 */
+.other-button {
+  width: 100%;
+  // background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  // justify-content: space-around;
+  margin: 40rpx auto;
+  text-align: center;
+
+  .watch {
+    width: 33%;
+    position: relative;
+    flex-direction: column;
+    margin-right: 1rpx;
+    color: #666;
+  }
+
+  .watch::after {
+    content: "";
+    /* 伪元素必需属性 */
+    position: absolute;
+    right: -1rpx;
+    top: 10%;
+    width: 2rpx;
+    height: 80%;
+    /* 线的高度 */
+    background-color: #565fea;
+    /* 线的颜色 */
+    /* 可选添加渐变效果 */
+    /* background: linear-gradient(to right, transparent, #eaeaea, transparent); */
+  }
+
+  .like {
+    width: 33%;
+    position: relative;
+    flex-direction: column;
+    margin-right: 1rpx;
+    color: #666;
+  }
+
+  .like::after {
+    content: "";
+    /* 伪元素必需属性 */
+    position: absolute;
+    right: -1rpx;
+    top: 10%;
+    width: 2rpx;
+    height: 80%;
+    /* 线的高度 */
+    background-color: #565fea;
+    /* 线的颜色 */
+    /* 可选添加渐变效果 */
+    /* background: linear-gradient(to right, transparent, #eaeaea, transparent); */
+  }
+
+  .addAlbum {
+    width: 33%;
+    flex-direction: column;
+    margin-right: 1rpx;
+    color: #666;
+  }
+
+  .button-icon {
+    width: 120rpx;
+    height: 120rpx;
+  }
+}
+
+.company-intro {
+  background-color: #fff;
+  padding: 30rpx;
+  border: 1rpx solid #666;
+  border-radius: 40rpx;
+  margin: 30rpx 0;
+}
+
+.btn {
+  background-color: #605fe3;
+  color: white;
+  border: none;
+  border-radius: 50rpx;
+  font-size: 38rpx;
+  padding: 25rpx 0;
+  width: 250rpx;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 4rpx 12rpx rgba(37, 34, 121, 0.3);
+  margin-top: 40rpx;
+  position: absolute;
+  bottom: 80rpx;
+  transition: all 0.3s;
+}
+
+.btn:active {
+  transform: scale(0.9);
+  transition: all 0.3s;
+}
