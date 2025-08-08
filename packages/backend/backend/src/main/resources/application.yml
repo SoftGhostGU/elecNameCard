@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: backend
+  datasource:
+    url: jdbc:mysql://localhost:3306/visitingcard?useSSL=false
+    username: root
+    password: GUyiwei_)*@@
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+admin:
+  username: "admin"
+  password: "admin"
