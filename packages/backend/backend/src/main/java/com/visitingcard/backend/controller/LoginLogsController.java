@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.servlet.http.HttpServletRequest;
+
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -100,6 +102,35 @@ public class LoginLogsController {
             ));
 
             return ResponseEntity.internalServerError().body(errorResponse);
+        }
+    }
+
+    @GetMapping("/queryAllLogs")
+    public ResponseEntity<Map<String, Object>> getAllLogs() {
+        logger.info("[LoginLogsController] 获取所有登录日志");
+
+        try {
+            logger.info("[LoginLogsController] 调用logsService.getAllLogs()，查询所有登录日志");
+            LogsProfile[] logs = logsService.getAllLogs();
+            logger.info("[LoginLogsController] 得到返回结果：" + Arrays.toString(logs));
+            Map<String, Object> successResponse = new HashMap<>();
+            successResponse.put("code", 200);
+            successResponse.put("message", "获取所有登录日志成功");
+            successResponse.put("data", logs);
+
+            return ResponseEntity.ok(successResponse);
+        } catch (BusinessException e) {
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("code", e.getCode());
+            errorResponse.put("message", e.getMessage());
+            errorResponse.put("data", null);
+            return ResponseEntity.ok(errorResponse);
+        } catch (Exception e) {
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("code", 500);
+            errorResponse.put("message", "服务器内部错误");
+            errorResponse.put("data", null);
+            return ResponseEntity.ok(errorResponse);
         }
     }
 
