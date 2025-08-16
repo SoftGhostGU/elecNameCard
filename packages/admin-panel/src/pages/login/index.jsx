@@ -36,39 +36,9 @@ const Login = () => {
     request.getLogin(userInfo).then(res => {
       if (res?.data?.code == 200) {
         console.log("登录成功：", res.data.data)
-
-        // 存储用户信息 角色信息
-        localStorage.setItem(window.envConfig['ROOT_APP_INFO'], JSON.stringify({
-          roleInfo: res.data.data.roleInfo[0],
-          userInfo: res.data.data.userInfo,
-          token: res.data.data.token
-        }))
-
-        if (ISROUTER) {
-          getMenu().then(res => {
-            // 通知reducer页面数据变化了
-            store.dispatch({
-              type: 'reload',
-              data: true
-            })
-            setTimeout(() => {
-              navigate('/dashboard/analysis')
-            }, 300);
-            // 判断是否是登录页进入首页
-            localStorage.setItem("ZhuXiaoJia", true)
-          })
-        } else {
-          setTimeout(() => {
-            navigate('/dashboard/analysis')
-          }, 300);
-          // 通知reducer页面数据变化了
-          store.dispatch({
-            type: 'reload',
-            data: true
-          })
-          // 判断是否是登录页进入首页
-          localStorage.setItem("ZhuXiaoJia", true)
-        }
+        setTimeout(() => {
+          navigate('/dashboard/analysis')
+        }, 300);
       } else {
         message.error("登录失败，请检查用户名和密码");
       }
@@ -80,35 +50,6 @@ const Login = () => {
       setSubmitLoginName('登录')
       message.error("登录失败，请检查用户名和密码");
     })
-  };
-
-  useEffect(() => {
-    const appInfo = JSON.parse(localStorage.getItem(window.envConfig['ROOT_APP_INFO']))
-    if (appInfo) {
-      navigate('/dashboard/analysis')
-    }
-    const loginChecked = getCookies('loginChecked')
-    if (loginChecked) {
-      let { checked, password, username } = JSON.parse(decrypt(loginChecked))
-      setChecked(checked)
-      form.setFieldsValue({
-        username, password
-      })
-    }
-  }, [navigate]); // 使用navigate作为依赖
-
-  // 记住密码
-  const onChange = async (e) => {
-    const loginChecked = getCookies('loginChecked')
-    if (loginChecked) {
-      setChecked(false)
-      removeCookies("loginChecked", 7)
-    } else {
-      let values = await form.validateFields();
-      values.checked = e.target.checked
-      setChecked(e.target.checked)
-      setCookies('loginChecked', encrypt(JSON.stringify(values)), 7) //7天有效期
-    }
   };
 
   // 验证码校验
@@ -179,7 +120,7 @@ const Login = () => {
                   </Col>
                 </Row>
               </Form.Item>
-              <Checkbox onChange={onChange} checked={checked} >记住密码</Checkbox>
+              {/* <Checkbox onChange={onChange} checked={checked} >记住密码</Checkbox> */}
 
               <Form.Item>
                 <Button type="primary" htmlType="submit" className="login-form-button" loading={loading} disabled={loading}>
