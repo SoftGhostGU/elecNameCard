@@ -1,70 +1,131 @@
-# Getting Started with Create React App
+# React-admin-vite
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+本项目使用前端新型构建工具vite ， 更换了以往的webpack。
 
-## Available Scripts
+开箱即用，使其开发效率提高，编译速度更快，减少复杂配置。
 
-In the project directory, you can run:
+在正式启动项目前，请检查本地环境版本。如若启动失败，请升级node。
 
-### `npm start`
+react-admin-vite 适用于后台管理 web 项目的二次开发。让开发人员快速搭建后台管理项目。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+请仔细阅读本文档以后再进行使用！
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+访问地址：<a target="_blank" href="https://jiangsihan.cn/frontend/reactadmin">https://jiangsihan.cn/frontend/reactadmin</a>
 
-### `npm test`
+完整文档：<a target="_blank" href="https://jiangsihan.cn/react-admin-vite-press">https://jiangsihan.cn/react-admin-vite-press</a>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+代码仓库：<a target="_blank" href="https://gitee.com/jiangsihan/react-admin-vite">https://gitee.com/jiangsihan/react-admin-vite</a>
+## 技术分解
 
-### `npm run build`
+- react@18
+- antd@4.24
+- react-dom@18
+- react-router-dom@6.3
+- react-scripts@5.0
+- react-Hooks
+- redux
+- vite
+- axios
+- less
+- echarts
+- eslint
+- antv
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 技术文档
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- react：https://react.docschina.org/
+- vite：https://cn.vitejs.dev/guide/
+- antd：https://4x.ant.design/components/button-cn/
+- antv：http://antv.antfin.com/zh-cn/g2/3.x/demo/index.htm
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 环境版本
 
-### `npm run eject`
+- node：v16.16.0   
+- npm：v8.11.0
+- react-scripts：v5.0.1
+- vite：v4.1.0
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 目录说明
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+react-admin-vite 
+│
+└── public 
+│
+└── src
+│   ├── api  ： 请求与接口配置文件
+│   ├── assets ： 静态资源文件
+│   ├── components  ： 公共组件存放文件
+│   ├── hooks  ： hooks
+│   └───pages  ： view视图组件文件
+│       ├── Commonview  公共视图组件 包含菜单导航页面
+│       ├── dashboard  首页
+│       ├── login  登录
+│       └───system  系统管理
+│           ├── deptNew  机构管理
+│           ├── permission  菜单管理
+│           ├── roleUserList  角色管理
+│           └───user  用户管理
+│   	   
+│   ├── redux  ： redux
+│   ├── router  ： 路由菜单
+│   ├── styles  ： 公共样式
+│   ├── utils   ： 工具库
+│   └───App.jsx  ： 入口文件
+│
+└── vite.config.js  ： vite配置
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 开始使用
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+git仓库
 
-## Learn More
+```
+https://gitee.com/jiangsihan/react-admin-vite.git
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+安装依赖包
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+npm i  |  cnpm i 
+```
 
-### Code Splitting
+项目启动
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+npm run dev
+```
 
-### Analyzing the Bundle Size
+项目打包
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+npm run build
+```
 
-### Making a Progressive Web App
+## 项目图片
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+![https://gitee.com/jiangsihan/react-admin-vite-press/raw/master/docs/pbulic/login.png](https://gitee.com/jiangsihan/react-admin-vite-press/raw/master/docs/pbulic/login.png)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+![https://gitee.com/jiangsihan/react-admin-vite-press/raw/master/docs/pbulic/home.png](https://gitee.com/jiangsihan/react-admin-vite-press/raw/master/docs/pbulic/home.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+![https://gitee.com/jiangsihan/react-admin-vite-press/raw/master/docs/pbulic/menu.png](https://gitee.com/jiangsihan/react-admin-vite-press/raw/master/docs/pbulic/menu.png)
+
+
+
+![https://gitee.com/jiangsihan/react-admin-vite-press/raw/master/docs/pbulic/setting.png](https://gitee.com/jiangsihan/react-admin-vite-press/raw/master/docs/pbulic/setting.png)
+
+
+
+
+
+项目构建日期：2023/03/15
+
+jiangyiming621@163.com
+
+Yiming_Jiang

@@ -12,4 +12,9 @@ public interface LogsService {
      */
     LogsProfile login(LoginRequest request, String clientIp, String userAgent);
 
+    /**
+     * Method to get all logs
+     * @return all logs
+     */
+    LogsProfile[] getAllLogs();
 }

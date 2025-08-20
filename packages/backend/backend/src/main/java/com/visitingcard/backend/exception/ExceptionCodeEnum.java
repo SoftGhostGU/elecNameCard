@@ -24,6 +24,9 @@ public enum ExceptionCodeEnum {
     USER_UPDATE_ERROR(10018, "用户资料更新异常"),
     // 管理员相关异常 from enums
     ADMIN_LOGIN_FAILED(10021, "管理员登录失败"),
+    // 日志相关异常 from enums
+    LOG_SAVE_ERROR(10031, "日志保存失败"),
+    LOGS_NOT_FOUND(10032, "日志获取失败"),
     // 系统通用异常 from enums
     DEFAULT_ERROR(500, "默认错误"),
     SYSTEM_ERROR(99999, "系统异常");

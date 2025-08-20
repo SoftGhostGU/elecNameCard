@@ -3,6 +3,8 @@ package com.visitingcard.backend.service;
 import com.visitingcard.backend.dto.User.UserDeleteRequest;
 import com.visitingcard.backend.dto.User.UserInfoRequest;
 import com.visitingcard.backend.dto.User.UserProfileDTO;
+import com.visitingcard.backend.dto.User.UserUpdateRequest;
+import com.visitingcard.backend.entity.User;
 
 public interface UserService {
 
@@ -32,4 +34,11 @@ public interface UserService {
      * @return User information
      */
     UserProfileDTO queryUserProfile(UserInfoRequest userInfoRequest);
+
+    /**
+     * Update user information
+     * @param userUpdateRequest
+     * @return User information
+     */
+    User updateUserInfo(UserUpdateRequest userUpdateRequest);
 }

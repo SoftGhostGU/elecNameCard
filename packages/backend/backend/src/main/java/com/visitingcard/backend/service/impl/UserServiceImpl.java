@@ -3,6 +3,7 @@ package com.visitingcard.backend.service.impl;
 import com.visitingcard.backend.dto.User.UserDeleteRequest;
 import com.visitingcard.backend.dto.User.UserInfoRequest;
 import com.visitingcard.backend.dto.User.UserProfileDTO;
+import com.visitingcard.backend.dto.User.UserUpdateRequest;
 import com.visitingcard.backend.entity.User;
 import com.visitingcard.backend.exception.BusinessException;
 import com.visitingcard.backend.exception.ExceptionCodeEnum;
@@ -105,6 +106,29 @@ public class UserServiceImpl implements UserService {
             throw e;
         } catch (Exception e) {
             throw new BusinessException(ExceptionCodeEnum.USER_PROFILE_ERROR, "获取用户信息失败：" + e.getMessage());
+        }
+    }
+
+    @Override
+    public User updateUserInfo(UserUpdateRequest userUpdateRequest) {
+        logger.info("[UserServiceImpl] 处理更新用户信息请求：" + userUpdateRequest.toString());
+        try {
+            long userId = userUpdateRequest.getUserId();
+            User user = userRepository.findByUserIdWithLog(userId)
+                   .orElseThrow(() -> new BusinessException(ExceptionCodeEnum.USER_NOT_FOUND, "用户不存在"));
+            user.setUsername(userUpdateRequest.getUsername());
+            user.setCompany(userUpdateRequest.getCompany());
+            user.setPosition(userUpdateRequest.getPosition());
+            user.setPhoneNumber(userUpdateRequest.getPhoneNumber());
+            user.setEmail(userUpdateRequest.getEmail());
+            user.setUpdatedAt(userUpdateRequest.getUpdatedAt());
+            userRepository.save(user);
+            logger.info("[UserServiceImpl] 更新用户信息成功：" + user.toString());
+            return user;
+        } catch (BusinessException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new BusinessException(ExceptionCodeEnum.USER_UPDATE_ERROR, "更新用户信息失败：" + e.getMessage());
         }
     }
 

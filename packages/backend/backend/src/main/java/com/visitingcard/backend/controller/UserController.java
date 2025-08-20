@@ -3,6 +3,7 @@ package com.visitingcard.backend.controller;
 import com.visitingcard.backend.dto.User.UserDeleteRequest;
 import com.visitingcard.backend.dto.User.UserInfoRequest;
 import com.visitingcard.backend.dto.User.UserProfileDTO;
+import com.visitingcard.backend.dto.User.UserUpdateRequest;
 import com.visitingcard.backend.entity.User;
 import com.visitingcard.backend.exception.BusinessException;
 import com.visitingcard.backend.exception.ExceptionCodeEnum;
@@ -62,7 +63,7 @@ public class UserController {
      * 查询所有用户信息
      * @return ResponseEntity<Map<String, Object>>
      */
-    @PostMapping("/queryAllUserInfo")
+    @GetMapping("/queryAllUserInfo")
     public ResponseEntity<Map<String, Object>> queryAllUserInfo() {
         logger.info("[UserController] 接受到请求 - 查询所有用户信息");
 
@@ -87,7 +88,12 @@ public class UserController {
         }
     }
 
-    @PostMapping("/deleteUser")
+    /**
+     * 删除用户信息
+     * @param userDeleteRequest
+     * @return ResponseEntity<Map<String, Object>>
+     */
+    @DeleteMapping("/user")
     public ResponseEntity<Map<String, Object>> deleteUser(@RequestBody UserDeleteRequest userDeleteRequest) {
         logger.info("[UserController] 接受到请求 - " + userDeleteRequest.getUserId());
         logger.info("[UserController] 删除用户信息 - 接收到删除请求：" + userDeleteRequest);
@@ -120,13 +126,12 @@ public class UserController {
         }
     }
 
-
     /**
      * 查询用户信息
      * @param userInfoRequest
      * @return ResponseEntity<Map<String, Object>>
      */
-    @PostMapping("/queryUserInfo")
+    @GetMapping("/user")
     public ResponseEntity<Map<String, Object>> queryUserInfo(@RequestBody UserInfoRequest userInfoRequest) {
         logger.info("[UserController] 接受到请求 - " + userInfoRequest.getUserId());
         logger.info("[UserController] 查询用户信息 - 接收到查询请求：" + userInfoRequest);
@@ -152,6 +157,38 @@ public class UserController {
             errorResponse.put("code", 500);
             errorResponse.put("message", "服务器内部错误");
             logger.warning("[UserController] 查询用户信息失败，服务器内部错误：" + errorResponse);
+            return ResponseEntity.ok(errorResponse);
+        }
+    }
+
+    /**
+     * 更新用户信息
+     * @param userUpdateRequest
+     * @return ResponseEntity<Map<String, Object>>
+     */
+    @PutMapping("/user")
+    public ResponseEntity<Map<String, Object>> updateUserInfo(@RequestBody UserUpdateRequest userUpdateRequest) {
+        logger.info("[UserController] 接受到请求 - " + userUpdateRequest.getUserId());
+        logger.info("[UserController] 更新用户信息 - 接收到更新请求：" + userUpdateRequest);
+
+        try {
+            logger.info("[UserController] 调用UserService.updateUserInfo()方法，更新用户信息");
+            User user = userService.updateUserInfo(userUpdateRequest);
+            logger.info("[UserController] 更新用户信息成功");
+            UserProfileDTO userProfileDTO = new UserProfileDTO(user);
+            return getMapResponseEntity(userProfileDTO, "更新成功");
+        } catch (BusinessException e) {
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("code", e.getCode());
+            errorResponse.put("message", e.getMessage());
+            errorResponse.put("data", null);
+            logger.warning("[UserController] 更新用户信息失败，返回结果：" + errorResponse);
+            return ResponseEntity.ok(errorResponse);
+        } catch (Exception e) {
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("code", 500);
+            errorResponse.put("message", "服务器内部错误");
+            logger.warning("[UserController] 更新用户信息失败，服务器内部错误：" + errorResponse);
             return ResponseEntity.ok(errorResponse);
         }
     }
